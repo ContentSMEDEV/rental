@@ -1,0 +1,14 @@
+@import "assets.scss";
+@import "addons.scss";
+@import "dashboard.scss";
+
+
+// This file prefixes all rules with the theme name to avoid causing conflicts with other themes.
+// The actual styles should be defined in assets.scss
+
+.assets {
+  @include addons;
+  @include assets;
+  @include dashboard;
+
+}
