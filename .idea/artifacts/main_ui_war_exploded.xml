@@ -94,7 +94,11 @@
         <element id="file-copy" path="$PROJECT_DIR$/main-ui/target/main-ui-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="main-ui/web/Web" />
-      <element id="gwt-compiler-output" facet="main-ui/gwt/GWT" />
+      <element id="directory" name="VAADIN">
+        <element id="directory" name="widgetsets">
+          <element id="gwt-compiler-output" facet="main-ui/gwt/GWT" />
+        </element>
+      </element>
     </root>
   </artifact>
 </component>

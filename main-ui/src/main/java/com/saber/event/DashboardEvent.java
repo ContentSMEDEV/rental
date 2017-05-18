@@ -1,26 +1,38 @@
 package com.saber.event;
 import com.saber.domain.Transaction;
+import com.saber.main.services.Car;
 import com.saber.view.DashboardViewType;
 import com.vaadin.server.Page;
 import com.vaadin.shared.Position;
 import com.vaadin.ui.Notification;
 import com.saber.main.services.UserService;
+import com.saber.main.services.User;
 import com.saber.main.MyUI;
 import java.util.Collection;
+import org.springframework.jdbc.core.JdbcTemplate;
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.*;
 
 public class DashboardEvent {
-	
-	
+
 	public static final class UserLoginRequestedEvent {
+
 		private String userName="";
 		private String password="";
 		private UserService userService;
 
-		public UserLoginRequestedEvent( String userName, String password) {
+
+        Connection connect = null;
+        PreparedStatement pre = null;
+
+        public UserLoginRequestedEvent( String userName, String password) {
             this.userName = userName;
             this.password = password;
-            
-            
+            this.userService.do_login();
         }
 
         public String getUserName() {
@@ -30,9 +42,9 @@ public class DashboardEvent {
         public String getPassword() {
             return password;
         }
-        
+
         public long loginVerify() {
-        	
+
             return this.userService.loginVerify(this.userName, this.password);
         }
     }
