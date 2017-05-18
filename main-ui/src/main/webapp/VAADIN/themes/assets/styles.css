@@ -319,8 +319,6 @@
 	font-family: ThemeIcons;
 	font-weight: normal;
 	font-style: normal;
-	src: url(../valo/util/bourbon/css3/../../../../base/fonts/themeicons-webfont.eot);
-	src: url(../valo/util/bourbon/css3/../../../../base/fonts/themeicons-webfont.eot?#iefix) format("embedded-opentype"), url(../valo/util/bourbon/css3/../../../../base/fonts/themeicons-webfont.woff) format("woff"), url(../valo/util/bourbon/css3/../../../../base/fonts/themeicons-webfont.ttf) format("truetype"), url(../valo/util/bourbon/css3/../../../../base/fonts/themeicons-webfont.svg#ThemeIcons) format("svg");
 }
 
 .ThemeIcons {
@@ -574,6 +572,12 @@
 	left: -1px;
 	background: black;
 	filter: alpha(opacity=9) progid:DXImageTransform.Microsoft.blur(pixelradius=0, makeShadow=false);
+}
+
+
+.v-button222{
+	color:red !important;
+	background: red !important;
 }
 
 /**

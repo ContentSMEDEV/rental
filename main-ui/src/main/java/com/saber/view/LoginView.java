@@ -22,6 +22,8 @@ import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
 import com.saber.main.services.UserService;
+import javax.swing.JOptionPane;
+import com.vaadin.ui.VerticalLayout;
 
 @SuppressWarnings("serial")
 public class LoginView extends VerticalLayout {
@@ -41,7 +43,7 @@ public class LoginView extends VerticalLayout {
         notification.setHtmlContentAllowed(true);
         notification.setStyleName("tray dark small closable login-help");
         notification.setPosition(Position.BOTTOM_CENTER);
-        notification.setDelayMsec(20000);
+        notification.setDelayMsec(3000);
         notification.show(Page.getCurrent());
     }
 
@@ -59,6 +61,7 @@ public class LoginView extends VerticalLayout {
     }
 
     private Component buildFields() {
+
         HorizontalLayout fields = new HorizontalLayout();
         fields.setSpacing(true);
         fields.addStyleName("fields");
@@ -79,13 +82,41 @@ public class LoginView extends VerticalLayout {
         fields.addComponents(username, password, signin);
         fields.setComponentAlignment(signin, Alignment.BOTTOM_LEFT);
 
+        CssLayout labels = new CssLayout();
+        labels.addStyleName("labels");
+
         signin.addClickListener(new ClickListener() {
             @Override
             public void buttonClick(final ClickEvent event) {
-                DashboardEventBus.post(new UserLoginRequestedEvent(username
-                        .getValue(), password.getValue()));
-                
-                
+
+                if(username.getValue()== "" || password.getValue() == "") {
+                    new Notification("ไม่สามารถเข้าสู่ระบบ",
+                            "<i>กรุณาตรวจสอบบัญชีผู้ใช้งานอีกครั้ง</i>",
+                            Notification.Type.WARNING_MESSAGE, true)
+                            .show(Page.getCurrent());
+
+
+                    Notification notification = new Notification(
+                            "ไม่สามารถเข้าสู่ระบบ");
+                    notification
+                            .setDescription("<i>กรุณาตรวจสอบบัญชีผู้ใช้งานอีกครั้ง</i>");
+                    notification.setHtmlContentAllowed(true);
+                    notification.setStyleName("tray warning small closable login-help");
+                    notification.setPosition(Position.BOTTOM_CENTER);
+                    notification.setDelayMsec(3000);
+                    notification.show(Page.getCurrent());
+
+
+                }
+                else{
+                    DashboardEventBus.post(new UserLoginRequestedEvent(username.getValue(), password.getValue()));
+
+                }
+
+
+
+//                DashboardEventBus.post(new UserLoginRequestedEvent(username
+//                        .getValue(), password.getValue()));
             }
         });
         return fields;
