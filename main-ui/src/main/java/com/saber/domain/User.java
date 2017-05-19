@@ -13,6 +13,14 @@ public final class User {
     private String website;
     private String bio;
 
+    public User(String _firstName, String _lastname){
+
+        //constructor
+        this.firstName = _firstName;
+        this.lastName = _lastname;
+
+
+    }
     public String getEmail() {
         return email;
     }

@@ -66,6 +66,7 @@ public class LoginView extends VerticalLayout {
         fields.setSpacing(true);
         fields.addStyleName("fields");
 
+
         final TextField username = new TextField("Username");
         username.setIcon(FontAwesome.USER);
         username.addStyleName(ValoTheme.TEXTFIELD_INLINE_ICON);
@@ -90,10 +91,6 @@ public class LoginView extends VerticalLayout {
             public void buttonClick(final ClickEvent event) {
 
                 if(username.getValue()== "" || password.getValue() == "") {
-                    new Notification("ไม่สามารถเข้าสู่ระบบ",
-                            "<i>กรุณาตรวจสอบบัญชีผู้ใช้งานอีกครั้ง</i>",
-                            Notification.Type.WARNING_MESSAGE, true)
-                            .show(Page.getCurrent());
 
 
                     Notification notification = new Notification(
@@ -106,9 +103,9 @@ public class LoginView extends VerticalLayout {
                     notification.setDelayMsec(3000);
                     notification.show(Page.getCurrent());
 
-
                 }
                 else{
+
                     DashboardEventBus.post(new UserLoginRequestedEvent(username.getValue(), password.getValue()));
 
                 }

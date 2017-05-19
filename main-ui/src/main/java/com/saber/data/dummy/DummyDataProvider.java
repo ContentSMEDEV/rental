@@ -388,7 +388,7 @@ public class DummyDataProvider implements DataProvider {
 */
     @Override
     public User authenticate(String userName, String password) {
-        User user = new User();
+        User user = new User("TEST","ST"); //TODO change without params
         user.setFirstName(DummyDataGenerator.randomFirstName());
         user.setLastName(DummyDataGenerator.randomLastName());
         user.setRole("admin");

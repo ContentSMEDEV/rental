@@ -32,7 +32,22 @@ public class DashboardEvent {
         public UserLoginRequestedEvent( String userName, String password) {
             this.userName = userName;
             this.password = password;
-            this.userService.do_login();
+
+            if ( this.userService.check_auth(this.userName,this.password)) {
+
+                    System.out.println("DFFFF");
+            } else {
+                Notification notification = new Notification(
+                        "ไม่สามารถเข้าสู่ระบบ");
+                notification
+                        .setDescription("<i>กรุณาตรวจสอบบัญชีผู้ใช้งานอีกครั้ง</i>");
+                notification.setHtmlContentAllowed(true);
+                notification.setStyleName("tray warning small closable login-help");
+                notification.setPosition(Position.BOTTOM_CENTER);
+                notification.setDelayMsec(3000);
+                notification.show(Page.getCurrent());
+            };
+
         }
 
         public String getUserName() {

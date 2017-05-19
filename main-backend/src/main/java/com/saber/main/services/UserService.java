@@ -11,54 +11,62 @@ import java.util.*;
 import java.sql.*;
 import java.util.Date;
 import org.gjt.mm.mysql.Driver;
+import java.lang.String;
+
 
 public class UserService {
-    private JdbcTemplate jdbcTemplate;
+private JdbcTemplate jdbcTemplate;
 
+    public static boolean check_auth(String setUsername,String setPassword) {
 
-    public UserService() {}
+        try{
 
-
-    public static void do_login() {
-        try
-        {
-            // create our mysql database connection
-
-            String myDriver = "org.gjt.mm.mysql.Driver";
-            String myUrl = "jdbc:mysql://localhost:3306/db?serverTimezone=UTC";
+            String myUrl = "jdbc:mysql://localhost:3306/db?serverTimezone=UTC&useSSL=false";
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             Connection conn = DriverManager.getConnection(myUrl, "root", "root");
 
-            // our SQL SELECT query.
-            // if you only need a few columns, specify them by name instead of using "*"
-            String query = "SELECT * FROM user";
 
-            // create the java statement
+            String query = "SELECT * FROM user WHERE username ="+"'"+setUsername+"'"+"AND password="+"'"+setPassword+"' limit 1";
             Statement st = conn.createStatement();
-
-            // execute the query, and get a java resultset
             ResultSet rs = st.executeQuery(query);
 
-            // iterate through the java resultset
-            while (rs.next())
-            {
-                long id = rs.getInt("id");
-                String _username = rs.getString("username");
-                String _password = rs.getString("password");
-                String _role = rs.getString("role");
+            if (rs != null ){
 
-                // print the results
-                System.out.format("%s, %s, %s, %s\n", id, _username,_password,_role);
+                //true
+                while (rs.next())
+                {
+                    long id = rs.getInt("id");
+                    String _username = rs.getString("username");
+                    String _password = rs.getString("password");
+                    String _role = rs.getString("role");
+
+                    // print the results
+                    System.out.format("%s, %s, %s, %s\n", id, _username,_password,_role);
+                    st.close();
+                    return true;
+                }
+
+
+
 
             }
-            st.close();
+            else {
+                //false (empty last row)
+                System.out.print("Not......");
+                st.close();
+                return false;
+
+            }
+
         }
         catch (Exception e)
         {
             System.err.println("Got an exception! ");
             System.err.println(e.getMessage());
+            return  false;
         }
 
+        return  false;
 
     }
 
@@ -66,17 +74,15 @@ public class UserService {
         return  1;
      }
 
-
 	 public List<User> findAll() {
 	        return jdbcTemplate.query("SELECT * FROM user",
 	                (rs, rowNum) -> new User(rs.getLong("id")));
-	    }
+     }
 
 
 
 
 
-	 
 //	 public void update(User user) {
 //	        jdbcTemplate.update("UPDATE customers SET first_name=?, last_name=? WHERE id=?",
 //	                customer.getFirstName(), customer.getLastName(), customer.getId());

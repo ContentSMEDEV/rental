@@ -35,6 +35,12 @@ import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
 import com.saber.component.BookingAddUpdateWindow;
+import com.vaadin.ui.Grid;
+import com.vaadin.ui.GridLayout;
+import com.vaadin.ui.UI;
+import java.util.*;
+import java.util.List;
+import com.vaadin.data.util.*;
 
 public final class TransactionView extends VerticalLayout implements View  {
 	 	private final Table table;
@@ -53,8 +59,29 @@ public final class TransactionView extends VerticalLayout implements View  {
 	        addComponent(buildToolbar());
 
 	        table = buildTable();
-	        addComponent(table);
-	        setExpandRatio(table, 1);
+	        //addComponent(table);
+
+
+			Collection<User> listuser = Arrays.asList(
+					new User("Nicolaus", "Copernicus"),
+					new User("Galileo", "Galilei"),
+					new User("Johannes", "Kepler"));
+			// Create a grid bound to the list
+
+			final BeanItemContainer<User> container =
+					new BeanItemContainer<User>(User.class, listuser);
+
+
+			// Create a grid bound to the container
+			Grid grid = new Grid(container);
+
+
+			grid.setSizeFull();
+			addComponent(grid);
+
+	        //setExpandRatio(table, 1);
+
+
 	    }
 	    
 	    @Override
