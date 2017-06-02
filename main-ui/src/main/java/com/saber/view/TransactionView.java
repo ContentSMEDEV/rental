@@ -52,7 +52,7 @@ public final class TransactionView extends VerticalLayout implements View  {
 	            "theater", "room", "title", "seats" };
 	    
 	    public TransactionView() {
-	        setSizeFull();
+	        //setSizeFull();
 	        addStyleName("transactions");
 	        DashboardEventBus.register(this);
 
@@ -77,6 +77,9 @@ public final class TransactionView extends VerticalLayout implements View  {
 
 
 			grid.setSizeFull();
+			grid.setWidth("100%");
+
+			grid.setHeight("100%");
 			addComponent(grid);
 
 	        //setExpandRatio(table, 1);

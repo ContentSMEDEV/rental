@@ -27,6 +27,8 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:4.3.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.3.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-beans:4.3.6.RELEASE" />
+          <element id="library" level="project" name="Maven: commons-dbcp:commons-dbcp:1.4" />
+          <element id="library" level="project" name="Maven: commons-pool:commons-pool:1.5.4" />
           <element id="library" level="project" name="Maven: org.elasticsearch.client:transport:5.2.2" />
           <element id="library" level="project" name="Maven: org.elasticsearch:elasticsearch:5.2.2" />
           <element id="library" level="project" name="Maven: org.apache.lucene:lucene-core:6.4.1" />

@@ -112,5 +112,6 @@
     <module>main-addon</module>
     <module>main-ui</module>
     <module>main-backend</module>
+      <module>unit_test</module>
   </modules>
 </project>

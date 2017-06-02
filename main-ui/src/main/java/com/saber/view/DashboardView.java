@@ -35,6 +35,7 @@ import com.vaadin.ui.TextArea;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
 import com.vaadin.ui.themes.ValoTheme;
+import com.vaadin.server.ThemeResource;
 
 @SuppressWarnings("serial")
 public final class DashboardView extends Panel implements View,
@@ -84,11 +85,12 @@ public final class DashboardView extends Panel implements View,
         header.addStyleName("viewheader");
         header.setSpacing(true);
 
-        titleLabel = new Label("Dashboard");
+        titleLabel = new Label("");
         titleLabel.setId(TITLE_ID);
         titleLabel.setSizeUndefined();
         titleLabel.addStyleName(ValoTheme.LABEL_H1);
         titleLabel.addStyleName(ValoTheme.LABEL_NO_MARGIN);
+        titleLabel.setIcon(new ThemeResource("logo_web.png"));
         header.addComponent(titleLabel);
 
         notificationsButton = buildNotificationsButton();

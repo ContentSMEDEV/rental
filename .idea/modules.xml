@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/main-addon/main-addon.iml" filepath="$PROJECT_DIR$/main-addon/main-addon.iml" />
       <module fileurl="file://$PROJECT_DIR$/main-backend/main-backend.iml" filepath="$PROJECT_DIR$/main-backend/main-backend.iml" />
       <module fileurl="file://$PROJECT_DIR$/main-ui/main-ui.iml" filepath="$PROJECT_DIR$/main-ui/main-ui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/unit_test/unit_test.iml" filepath="$PROJECT_DIR$/unit_test/unit_test.iml" />
     </modules>
   </component>
 </project>

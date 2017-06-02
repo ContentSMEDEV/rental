@@ -1,14 +1,10 @@
 package com.saber.view;
 
+
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -82,8 +78,26 @@ public final class ManageView extends VerticalLayout implements View  {
 	        //initDatabase();
 	        //initContainer(container);
 
-	    	List cars = service.findAll();
-	        grid.setContainerDataSource(new BeanItemContainer<>(Car.class, cars));
+	    	//List cars = service.findAll();
+	       	// grid.setContainerDataSource(new BeanItemContainer<>(Car.class, cars));
+			Collection<User> listuser = Arrays.asList(
+					new User("Nicolaus", "Copernicus"),
+					new User("Galileo", "Galilei"),
+					new User("Johannes", "Kepler"));
+			// Create a grid bound to the list
+
+			final BeanItemContainer<User> container =
+					new BeanItemContainer<User>(User.class, listuser);
+
+
+			// Create a grid bound to the container
+			Grid grid = new Grid(container);
+
+
+			grid.setSizeFull();
+			grid.setWidth("100%");
+
+			grid.setHeight("100%");
 
 	    	
 	    }

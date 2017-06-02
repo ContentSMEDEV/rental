@@ -3,11 +3,7 @@ package com.saber.view;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.Set;
+import java.util.*;
 
 import com.google.common.eventbus.Subscribe;
 import com.saber.event.DashboardEvent.BrowserResizeEvent;
@@ -15,6 +11,7 @@ import com.saber.domain.User;
 import com.saber.event.DashboardEventBus;
 import com.saber.main.MyUI;
 import com.vaadin.data.Property;
+import com.vaadin.data.util.BeanItemContainer;
 import com.vaadin.event.FieldEvents.TextChangeEvent;
 import com.vaadin.event.FieldEvents.TextChangeListener;
 import com.vaadin.navigator.View;
@@ -23,16 +20,10 @@ import com.vaadin.server.FontAwesome;
 import com.vaadin.server.Page;
 import com.vaadin.server.Responsive;
 import com.vaadin.server.VaadinSession;
-import com.vaadin.ui.Button;
+import com.vaadin.ui.*;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
-import com.vaadin.ui.Component;
-import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.Table;
 import com.vaadin.ui.Table.Align;
-import com.vaadin.ui.TextField;
-import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
 import com.saber.component.BookingAddUpdateWindow;
 
@@ -55,6 +46,25 @@ public final class BookingView extends VerticalLayout implements View  {
 	        table = buildTable();
 	        addComponent(table);
 	        setExpandRatio(table, 1);
+
+			Collection<User> listuser = Arrays.asList(
+					new User("Nicolaus", "Copernicus"),
+					new User("Galileo", "Galilei"),
+					new User("Johannes", "Kepler"));
+			// Create a grid bound to the list
+
+			final BeanItemContainer<User> container =
+					new BeanItemContainer<User>(User.class, listuser);
+
+
+			// Create a grid bound to the container
+			Grid grid = new Grid(container);
+
+
+			grid.setSizeFull();
+			grid.setWidth("100%");
+
+			grid.setHeight("100%");
 	    }
 	    
 	    @Override
